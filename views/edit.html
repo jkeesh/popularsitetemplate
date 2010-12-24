@@ -2,8 +2,18 @@
 	<head>
 		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 		<script language="JavaScript" src="/scripts/jquery.js"></script>
+		<script type="text/javascript" src="/scripts/farbtastic.js"></script>
+		<link rel="stylesheet" href="/stylesheets/farbtastic.css" type="text/css" />
 		<title>Popular Site Template | Edit Settings for {{ site.name }}</title>
 	</head>
+	
+	{% include "bg.html" %}
+	
+	<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+						  $('#picker').farbtastic('#color');
+						  });
+	</script>
 	
 	<body>
 		<div id="wrapper">
@@ -58,6 +68,13 @@
 						<td class="settingsRow">
 							<input type="radio" name="images" value="yes" {% if site.hasPhotos %} checked {% endif %} /> Yes
 							<input type="radio" name="images" value="no"  {% if not site.hasPhotos %} checked {% endif %} />No
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="settingsRow bolded">Background Color</td>
+						<td class="settingsRow">
+							<input type="text" id="color" name="color" value="{{ site.backgroundColor }}" /></div><div id="picker"></div>
 						</td>
 					</tr>
 					<tr>

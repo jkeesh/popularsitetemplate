@@ -54,6 +54,7 @@ class CreateSite(webapp.RequestHandler):
 		newSite.hasPhotos = False
 		newSite.upvoteTitle = "Like"
 		newSite.downvoteTitle = "Dislike"
+		newSite.backgroundColor = "#cccccc"
 		newSite.put()
 		
 		# add the Site to the UserInfo

@@ -1,17 +1,5 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:og="http://ogp.me/ns#"
-      xmlns:fb="http://www.facebook.com/2008/fbml">
-	<head>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-		<script language="JavaScript" src="/scripts/jquery.js"></script>
-		<script language="JavaScript" src="/scripts/vote.js"></script>
-		<title>{{ site.name }}</title>
-		<meta property="og:site_name" content="Popular Site Template"/> 
-		<meta property="og:title" content="{{ site.name }}"/> 
-		<meta property="og:url" content="http://www.popularsitetemplate.com/{{ site.url }}"/> 
-	</head>
-	
-	
+{% include "header.html" %}
+
 	<body>
 		<div id="facebook">
 		<iframe src="http://www.facebook.com/plugins/like.php?href=http%3A%2F%2Fwww.popularsitetemplate.com%2F{{ site.url }}&amp;layout=button_count&amp;show_faces=false&amp;width=100&amp;action=like&amp;colorscheme=light&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:100px; height:21px;" allowTransparency="true"></iframe>

@@ -44,9 +44,7 @@ class EditSettings(webapp.RequestHandler):
 		site.slogan = self.request.get('slogan')
 		site.upvoteTitle = self.request.get('upvoteTitle')
 		site.downvoteTitle = self.request.get('downvoteTitle')
-		self.response.out.write(site.slogan)
-		self.response.out.write(site.upvoteTitle)
-		self.response.out.write(site.downvoteTitle)
+		site.backgroundColor = self.request.get('color')
 		
 		comments = self.request.get('comments')
 		if comments == "yes":
