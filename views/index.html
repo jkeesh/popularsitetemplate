@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+		<script language="JavaScript" src="/scripts/jquery.js"></script>
+		<title>Popular Site Template - Start Your Own Popular Site!</title>
+	</head>
+	
+	<body>
+		<div id="header">
+			<div id="title">Popular Site Template</div>
+			<div id="login">
+				<span class="homeGreeting">{{ greeting }} |</span> 
+				<a href="{{ url }}" class="whiteLink">{{ url_linktext }}</a>
+			</div>
+		</div>
+		<div id="buffer"></div>
+		<div id="mainwrapper">
+			
+			{% if exception %}
+			
+			<div class="exception">{{ exception }}</div>
+			
+			{% endif %}
+			
+			<div id="innerwrap">
+				
+				
+				<div id="welcomeBar">
+					<h1>There are lots of popular sites.</h1>
+					<div class="popularSite"><a href="http://fmylife.com">FMyLife</a></div>
+					<div class="popularSite"><a href="http://mylifeisaverage.com">My Life is Average</a></div>
+					<div class="popularSite"><a href="http://textsfromlastnight.com">Texts From Last Night</a></div>
+					<div class="popularSite"><a href="http://damnyouautocorrect.com">Damn You Autocorrect</a></div>
+					<div class="popularSite">... and many more</div>
+					
+					
+					<h3> ... but now, with Popular Site Template, you can create your own popular site!</h3>
+				</div>
+				
+				
+				<div id="createSite">
+					<h1>Create a Popular Site!</h1>
+					
+					<form action="/create" method="post">
+						<h2>Site Name</h2>
+						<div class="createField"><input type="text" name="siteName"></div>
+						<h2>Site URL</h2><h3>Your site will appear at:</h3>
+						<table cellspacing=0 cellpadding=0><tr>
+							<td class="createText">popularsitetemplate.com/</td><td class="createURL">
+								<input type="text" class="defaultCreate" name="siteURL" onblur="if (this.value == '') {this.value = 'yoursiteurl'; $('#u').addClass('defaultCreate'); }" onfocus="if (this.value == 'yoursiteurl') {this.value = ''; $('#u').removeClass('defaultCreate'); }" value="yoursiteurl" id="u" /></td>
+						</tr></table>
+						<div class="submitIdea button"><input type="submit" value="Create Site!"></div>
+					</form>
+				</div>
+				
+				
+				<div style="clear:both"></div>
+				<hr/>
+				
+				<div id="recentSites">
+					<h1>Recent Sites Created With Popular Site Template</h1>
+					
+					{% for site in recentSites %}
+					<div class="siteName"><a href="/{{ site.url }}">{{ site.name }}</a></div>
+					{% endfor %}
+				</div>
+				
+				
+			</div>
+			
+			
+			
+		</div>
+		
+	</body>
+</html>

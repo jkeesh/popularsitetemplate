@@ -1,0 +1,374 @@
+body {
+	font-family: Helvetica, Trebuchet MS, Georgia, Verdana, Helvetica, sans-serif;
+	background-color: #ccc;
+}
+
+#facebook{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+
+#bestLinks{
+	position: absolute;
+	background-color: white;
+	top: 50px;
+	right: 40px;
+	padding: 10px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+}
+
+#bestTitle{
+	font-size: 15px;
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+
+.notice{
+	padding-top: 10px;
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+
+#header{
+	background-color: #333;
+	position: absolute;
+	padding-top: 10px;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 60px;
+}
+
+.comment{
+	background-color: #ddd;
+	border: 1px solid black;
+	margin: 10px;
+	padding: 10px;
+	border-radius: 8px;
+	-moz-border-radius: 8px;
+}
+
+.commentAuthor{
+	font-weight: bold;
+	font-size: 12px;
+}
+
+.commentText{
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+#commentBox{
+	margin-top: 10px;
+}
+
+.itemAuthor{
+	color: gray;
+}
+
+.spacer{
+	width: 60px;
+}
+
+#login{
+	position: absolute;
+	top: 10px;
+	right: 100px;
+	text-transform: uppercase;
+	font-family: Helvetica;
+	font-size: 12px;
+}
+
+.homeGreeting{
+	color: white;
+}
+
+.whiteLink{
+	color: white;
+}
+
+#buffer{
+	height:30px;
+}
+
+.itemPhoto{
+	padding: 35px;
+}
+
+.itemPhoto img{
+/*	width: 400px; */
+	height: 200px;
+	margin: auto;
+}
+
+#title{
+	width: 900px;
+	padding-left: 100px;
+	padding-top: 5px;
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+	margin: auto;
+
+}
+
+a{
+	color: #444;
+	text-decoration: none;
+}
+
+.button input{
+	background-color: white;
+}
+
+.button input:hover{
+	background-color: #ccc;
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+.itemInfo a{
+	color: gray;
+	text-decoration: none;
+}
+
+#siteTitle{
+	font-size: 30px;
+	font-weight: bold;
+}
+
+
+.siteName{
+	font-size: 20px;
+	padding: 7px;
+	margin-left: 25px;
+	font-weight: bold;
+}
+
+.itemInfo a:hover{
+	text-decoration: underline;
+}
+
+.item{
+	padding: 10px;
+	background-color: white;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	margin-top: 20px;
+	font-family: Lucida Grande;
+	font-size: 13px;
+}
+
+.itemInfo{
+	margin-top: 8px;
+	font-size: 10px;
+}
+
+.userName{
+	margin-top: 80px;
+	font-family: Trebuchet MS, Georgia, Verdana, Helvetica, sans-serif;
+	font-size: 30px;
+}
+
+.profileLink, .profileLink a{
+	text-decoration: none;
+	color: gray;
+}
+
+.profileLink:hover, .profileLink a:hover{
+	text-decoration: underline;
+}
+
+.exception{
+	color: red;
+	background-color: white;
+	font-weight: bold;
+	padding: 17px;
+	text-align: center;
+	border: 2px solid black;
+}
+
+#mainwrapper{
+	margin-top: 300px;
+}
+
+#innerwrap{
+	padding-top: 20px;
+	margin: auto;
+	width: 980px;
+}
+
+#createSite{
+	width: 500px;
+	margin-left: 100px;
+	padding: 20px;
+	float: left;
+}
+
+#welcomeBar{
+	padding: 20px;
+	float: left;
+	width: 300px;
+	background-color: #CDCDCD;
+}
+
+.popularSite{
+	font-size: 15px;
+	padding: 6px;
+	font-family: Helvetica;
+}
+
+.popularSite:hover{
+	background-color: white;
+	text-decoration: underline;
+}
+
+.listName{
+	font-size: 20px;
+}
+
+#loginwrapper{
+	margin: auto;
+	width: 400px;
+	padding: 100px;
+}
+
+.submitIdea input, .accept input{
+	border: 1px solid black;
+	font-size: 130%;
+	font-weight: bold;
+	margin-top: 13px; 
+	float: left;
+	border-radius: 7px;
+	-moz-border-radius: 7px;
+}
+
+.shareField input{
+	font-size: 20px;
+	height: 30px;
+	width: 150px;
+	float: right;
+	margin-top: 3px;
+	background-color: white;	
+}
+
+.shareText{
+	font-size: 20px;
+	margin-top: 6px;
+	margin-right: 7px;
+	float: right;	
+}
+
+.createText{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.defaultCreate{
+	color: #ccc;
+}
+
+.createURL input, .createURL input:hover{
+	background-color: white;
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Helvetica;
+	padding: 5px;
+}
+
+.createField input, .createField input:hover{
+	font-size: 130%;
+	height: 40px;
+	width: 480px;
+	background-color: white;
+}
+
+.settingsRow{
+	padding: 10px;
+}
+
+.slogan{
+	font-size: 15px;
+	padding:0px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	margin:0px;
+}
+
+.bolded{
+	font-weight: bold;
+}
+
+.textField input{
+	font-size: 130%;
+	height: 40px;
+	width: 700px;
+}
+
+.settingsText input, .settingsText input:hover{
+	font-size: 130%;
+	height: 40px;
+	width: 500px;
+	background-color: white;
+}
+
+#saved{
+	font-size: 25px;
+	font-weight: bold;
+	padding: 10px;
+}
+
+.accept{
+	float: right;
+}
+
+hr{
+	border: none 0; 
+	border-top: 1px dashed #000;
+	height: 1px;
+}
+
+h3{
+
+}
+
+
+#wrapper{
+	margin:auto;
+	width: 700px;
+}
+
+#mainwrapper{
+	margin:auto;
+	width: 900px;
+}
+
+textarea{
+	width: 700px;
+	height: 70px;
+	font-family: Helvetica;
+	font-size: 15px;
+}
+
+.score{
+	text-align: center;
+	color: #757575;
+	font-weight: bold;
+	font-size: 240%;
+	vertical-align: top;
+}
+
+form{
+	padding: 0px;
+	margin: 0px;
+}
+
+.voteButtons{
+	margin: auto;
+	width: 50px;
+}

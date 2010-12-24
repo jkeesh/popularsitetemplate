@@ -1,0 +1,90 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+		<script language="JavaScript" src="/scripts/jquery.js"></script>
+		<title>Popular Site Template | Edit Settings for {{ site.name }}</title>
+	</head>
+	
+	<body>
+		<div id="wrapper">
+			<div style="float:right">
+				<a href="{{ url }}">{{ url_linktext }}</a>
+			</div>
+			<h1>Edit Settings for <a href="/{{site.url}}" class="whiteLink">{{ site.name }}</a></h1>
+			
+			<form action="/{{ site.url }}/edit" method="post">
+				<table>
+					<tr>
+						<td class="settingsRow bolded">
+							Site Slogan
+						</td>
+						<td class="settingsRow">
+							<div class="settingsText"><input type="text" name="slogan" value="{{ site.slogan }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="settingsRow bolded">
+							Like Word
+						</td>
+						<td class="settingsRow">
+							<div class="settingsText"><input type="text" name="upvoteTitle" value="{{ site.upvoteTitle }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="settingsRow bolded">
+							Dislike Word
+						</td>
+						<td class="settingsRow">
+							<div class="settingsText"><input type="text" name="downvoteTitle" value="{{ site.downvoteTitle }}"></div>
+						</td>
+					</tr>
+					<tr>
+						<td class="settingsRow bolded">Comments</td>
+						<td class="settingsRow">
+							<input type="radio" name="comments" value="yes" {% if site.hasComments %} checked {% endif %} /> Comments
+							<input type="radio" name="comments" value="no"  {% if not site.hasComments %} checked {% endif %}/>No Comments
+						</td>
+					</tr>
+					<tr>
+						<td class="settingsRow bolded">Anonymous</td>
+						<td class="settingsRow">
+							<input type="radio" name="anon" value="yes" {% if site.isAnonymous %} checked {% endif %} /> Yes
+							<input type="radio" name="anon" value="no"  {% if not site.isAnonymous %} checked {% endif %} />No (display usernames)
+						</td>
+					</tr>
+					
+					<tr>
+						<td class="settingsRow bolded">Images</td>
+						<td class="settingsRow">
+							<input type="radio" name="images" value="yes" {% if site.hasPhotos %} checked {% endif %} /> Yes
+							<input type="radio" name="images" value="no"  {% if not site.hasPhotos %} checked {% endif %} />No
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					
+					<tr><td><div class="submitIdea button"><input type="submit" value="Save Settings"></div></td></tr>
+				</table>
+			</form>
+			
+			{% if saved %}
+			<div id="saved">
+				Saved.
+			</div>
+			<script>
+				
+				function remove(){
+					$("#saved").fadeOut("slow");
+				}
+				setTimeout("remove()", 700);				
+				</script>
+			{% endif %}
+			
+			
+			
+		</div>
+		
+	</body>
+</html>

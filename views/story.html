@@ -1,0 +1,51 @@
+<div class="item" id="item{{ item.key.id }}">
+	<div class="itemText">
+		{{ item.content|escape }}
+	</div>
+	<div class="itemInfo">
+	
+		{% if site.hasPhotos and item.hasImage %}
+		<div class="itemPhoto">
+		<img src='/img?img_id={{ item.key }}' />
+		</div>
+		{% endif %}
+	
+		<span class="upvote" id="upvote{{ item.key.id}}">
+			<a href="javascript:vote('{{ site.url }}', {{ item.key.id }}, 1)">
+				<span id="upvoteText{{item.key.id}}">{{ site.upvoteTitle }}</span> 
+				(<span id="upvoteNumber{{item.key.id}}">{{ item.upvotes }}</span>)
+			</a>
+		</span>
+		<span class="spacer"> &nbsp;&nbsp;&nbsp;</span>
+		
+		<span class="downvote" id="downvote{{ item.key.id }}">
+			<a href="javascript:vote('{{ site.url }}', {{ item.key.id }}, -1)">
+				<span id="downvoteText{{item.key.id}}">{{ site.downvoteTitle }}</span>
+				(<span id="downvoteNumber{{item.key.id}}">{{ item.downvotes }}</span>)
+			</a>
+		</span>
+		<span class="spacer"> &nbsp;&nbsp;&nbsp;</span>
+		
+		<span>
+			<a href="/{{ site.url }}/item/{{ item.key.id }}">#{{ item.key.id }}</a>
+		</span>
+		<span class="spacer"> &nbsp;&nbsp;&nbsp;</span>
+		
+		{% if admin %}
+		<span>
+			<a href="javascript:deleteItem('{{ site.url }}', {{ item.key.id}})">Delete</a>
+			
+		</span>
+		<span class="spacer"> &nbsp;&nbsp;&nbsp;</span>
+		
+		{% endif %}
+		
+		{% if not site.isAnonymous %}
+		<span class="itemAuthor">
+			{{ item.author.displayName }}
+		</span>
+		{% endif %}
+	
+	</div>
+	
+</div>
