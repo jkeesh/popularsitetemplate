@@ -18,14 +18,22 @@ class CreateSite(webapp.RequestHandler):
 		
 		
 		if len(siteName) == 0 or len(siteURL) == 0:
-			self.redirect('/')
+			self.redirect('/error/zero')
 			return
 			
-		
+		if not siteURL.isalnum():
+			self.redirect('/error/invalid')
+			return
+			
+		reserved = ['error', 'yoursiteurl', 'img', 'create']
+		if siteURL in reserved:
+			self.redirect('/error/taken')
+			return
+			
 		alreadyExists = getSiteFromUrl(siteURL)
 		self.response.out.write(alreadyExists)
 		if alreadyExists != None and  alreadyExists.url:
-			self.redirect('/taken')
+			self.redirect('/error/taken')
 			return
 		
 		currentUserInfo = getCurrentUserInfo()

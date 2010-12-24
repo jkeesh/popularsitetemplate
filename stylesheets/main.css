@@ -184,6 +184,11 @@ a:hover{
 	text-decoration: underline;
 }
 
+
+.exceptionBuffer{
+	height: 30px;
+}
+
 .exception{
 	color: red;
 	background-color: white;
