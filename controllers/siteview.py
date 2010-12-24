@@ -23,8 +23,11 @@ class SiteView(webapp.RequestHandler):
 			
 		theSite = getSiteFromUrl(siteURL)
 		if not theSite:
-			self.response.out.write(siteURL + 'from siteview')
-			return
+			self.redirect('/')
+		
+		if not theSite.backgroundColor:
+			theSite.backgroundColor = "#ccc"
+			theSite.put()
 	
 		siteID = theSite.key().id()
 		
