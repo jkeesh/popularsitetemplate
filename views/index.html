@@ -1,9 +1,9 @@
-<html>
-	<head>
-		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-		<script language="JavaScript" src="/scripts/jquery.js"></script>
-		<title>Popular Site Template - Start Your Own Popular Site!</title>
-	</head>
+{% extends "base.html" %}
+
+{% block title %}Popular Site Template - Start Your Own Popular Site!{% endblock %}
+{% block bg %}{% endblock %}
+	
+{% block content %}
 	<body class="grayBG">
 		<div id="header">
 			<div id="title">Popular Site Template</div>
@@ -106,4 +106,5 @@
 		</div>
 		
 	</body>
-</html>
+
+{% endblock %}

@@ -5,10 +5,11 @@
 		<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
 		<script language="JavaScript" src="/scripts/jquery.js"></script>
 		<script language="JavaScript" src="/scripts/vote.js"></script>
-		<title>{{ site.name }}</title>
+		<title>{% block title %}{{ site.name }}{% endblock %}</title>
 		<meta property="og:site_name" content="Popular Site Template"/> 
-		<meta property="og:title" content="{{ site.name }}"/> 
+		<meta property="og:title" content="{% block sitename %}{{ site.name }}{% endblock %}"/> 
 		<meta property="og:url" content="http://www.popularsitetemplate.com/{{ site.url }}"/> 
+		<meta property="og:image" content="http://www.popularsitetemplate.com/images/logo.png" />
 		<meta property="og:type" content="website"/>
 		<meta property="fb:admins" content="1141800361"/>
 		<meta property="og:description"
