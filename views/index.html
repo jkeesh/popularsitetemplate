@@ -56,13 +56,31 @@
 				<div style="clear:both"></div>
 				<hr/>
 				
-				<div id="recentSites">
-					<h1>Recent Sites Created With Popular Site Template</h1>
-					
-					{% for site in recentSites %}
-					<div class="siteName"><a href="/{{ site.url }}">{{ site.name }}</a></div>
-					{% endfor %}
-				</div>
+				<table>
+					<tr>
+						<td class="padded" valign="top">
+							<div id="recentSites">
+								<h1>Recently Created</h1>
+								
+								{% for site in recentSites %}
+								<div class="siteName"><a href="/{{ site.url }}">{{ site.name }}</a></div>
+								{% endfor %}
+							</div>
+						</td>
+						<td style="width: 140px"></td>
+						</td>
+						<td class="padded" valign="top">
+							<div id="recentSites">
+								<h1>Most Popular</h1>
+								
+								{% for site in popularSites %}
+								<div class="siteName"><a href="/{{ site.url }}">{{ site.name }}</a></div>
+								{% endfor %}
+							</div>
+						</td>
+					</tr>
+				</table>
+				
 				
 				
 			</div>

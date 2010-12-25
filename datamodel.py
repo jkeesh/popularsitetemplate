@@ -21,6 +21,7 @@ class Site(db.Model):
 	isAnonymous = db.BooleanProperty()
 	hasPhotos = db.BooleanProperty()
 	backgroundColor = db.StringProperty()
+	views = db.IntegerProperty()
 
 class Item(db.Model):
 	upvotes = db.IntegerProperty()

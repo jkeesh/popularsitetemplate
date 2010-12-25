@@ -28,6 +28,12 @@ class SiteView(webapp.RequestHandler):
 		if not theSite.backgroundColor:
 			theSite.backgroundColor = "#ccc"
 			theSite.put()
+			
+		if not theSite.views:
+			theSite.views = 0
+		
+		theSite.views = theSite.views + 1
+		theSite.put()
 	
 		siteID = theSite.key().id()
 		

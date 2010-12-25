@@ -17,9 +17,14 @@ def getRedirectUrl(listID):
 	
 
 def getRecentSites():
-		sites_query = Site.all().order('-date')
-		sites = sites_query.fetch(100)
-		return sites
+	sites_query = Site.all().order('-date')
+	sites = sites_query.fetch(100)
+	return sites
+		
+def getPopularSites():
+	sites_query = Site.all().order('-views')
+	sites = sites_query.fetch(100)
+	return sites
 
 class MainPage(webapp.RequestHandler):
 	exception = None #"Error"
@@ -46,12 +51,14 @@ class MainPage(webapp.RequestHandler):
 
 		
 		recentSites = getRecentSites()
+		popularSites = getPopularSites()
 				
 		template_values = {
 			'url': url,
 			'url_linktext': url_linktext,
 			'greeting': greeting,
 			'recentSites': recentSites,
+			'popularSites': popularSites,
 			'exception': self.exception,
 		}
 
