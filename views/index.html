@@ -8,8 +8,12 @@
 		<div id="header">
 			<div id="title">Popular Site Template</div>
 			<div id="login">
-				<span class="homeGreeting">{{ greeting }} |</span> 
-				<a href="{{ url }}" class="whiteLink">{{ url_linktext }}</a>
+				{% if loggedIn %}
+				<span class="homeGreeting">{{ userInfo.displayName }} |</span> 
+				<a href="{{ url }}" class="whiteLink">Logout</a>
+				{% else %}
+				<a href="{{ url }}" class="whiteLink">Login</a>
+				{% endif %}
 			</div>
 		</div>
 		<div id="buffer"></div>
@@ -18,7 +22,6 @@
 			{% if exception %}
 			<div class="exceptionBuffer"></div>
 			<div class="exception">{{ exception }}</div>
-			
 			{% endif %}
 			
 			<div id="innerwrap">
@@ -37,6 +40,9 @@
 				</div>
 				
 				
+				
+				{% if loggedIn %}
+				
 				<div id="createSite">
 					<h1>Create a Popular Site!</h1>
 					
@@ -51,6 +57,16 @@
 						<div class="submitIdea button"><input type="submit" value="Create Site!"></div>
 					</form>
 				</div>
+				
+				{% else %}
+				
+				<div id="createSite">
+					<h1>Login to Create Your Own Popular Site!</h1>
+					
+					<div id="loginLink"><a href="{{ url }}">Login</a></div>
+				</div>
+				
+				{% endif %}
 				
 				
 				<div style="clear:both"></div>

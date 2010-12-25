@@ -16,10 +16,6 @@ from utils import *
 
 class SiteView(webapp.RequestHandler):
 	def get(self, siteURL):
-
-		userInfo = getCurrentUserInfo()
-		if not userInfo:
-			userInfo = createUserInfo()
 			
 		theSite = getSiteFromUrl(siteURL)
 		if not theSite:
@@ -41,9 +37,7 @@ class SiteView(webapp.RequestHandler):
 		items_query.filter('siteID =', int(siteID))
 		items = items_query.fetch(100)
 		
-		url = users.create_logout_url(self.request.uri)
-		url_linktext = 'logout'
-		
+		userInfo, loggedIn, login_url = getUserStatus(self)
 		admin = isAdmin(theSite)
 			
 		#instead of returning ideas and votes, return a list of 
@@ -57,10 +51,11 @@ class SiteView(webapp.RequestHandler):
 			'theUrl': self.request.uri,
 			'siteID': siteID,
 			'siteName': theSite.name,
-			'url': url,
-			'url_linktext': url_linktext,
+			'login_url': login_url,
 			'admin': admin,
 			'exception': exception,
+			'loggedIn' : loggedIn,
+			'userInfo': userInfo,
 		}
 
 		path = os.path.join(os.path.dirname(__file__), '../views/site.html')

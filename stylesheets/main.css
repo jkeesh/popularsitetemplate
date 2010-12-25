@@ -12,6 +12,29 @@ body {
 	left: 10px;
 }
 
+
+#loginRequest{
+	padding-top: 20px;
+}
+
+#loginLink{
+	font-size: 25px;
+	font-weight: bold;
+	padding-top: 100px;
+}
+
+#loginLink a{
+	color: black;
+	padding: 20px;
+	text-decoration: underline;
+}
+
+#loginLink a:hover{
+	color: black;
+	background-color: white;
+	text-decoration: none;
+}
+
 #bestLinks{
 	position: absolute;
 	background-color: white;

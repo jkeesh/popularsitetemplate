@@ -31,11 +31,7 @@ class BestView(webapp.RequestHandler):
 		if range == "day":
 			delta = timedelta(days=1)
 			besttime = "Today"
-					
-		userInfo = getCurrentUserInfo()
-		if not userInfo:
-			userInfo = createUserInfo()
-			
+								
 		site = getSiteFromUrl(siteURL)
 		if not site:
 			self.redirect('/')
@@ -58,10 +54,7 @@ class BestView(webapp.RequestHandler):
 			else:
 				items.append(item)
 
-		
-		url = users.create_logout_url(self.request.uri)
-		url_linktext = 'logout'
-		
+		userInfo, loggedIn, login_url = getUserStatus(self)
 		admin = isAdmin(site)
 			
 		#instead of returning ideas and votes, return a list of 
@@ -75,11 +68,12 @@ class BestView(webapp.RequestHandler):
 			'theUrl': self.request.uri,
 			'siteID': siteID,
 			'siteName': site.name,
-			'url': url,
-			'url_linktext': url_linktext,
+			'login_url': login_url,
 			'admin': admin,
 			'exception': exception,
-			'besttime': besttime
+			'besttime': besttime,
+			'loggedIn': loggedIn,
+			'userInfo': userInfo,
 		}
 
 		path = os.path.join(os.path.dirname(__file__), '../views/best.html')

@@ -11,13 +11,7 @@ from datamodel import *
 
 class ItemView(webapp.RequestHandler):
 	def get(self, siteURL, itemID):
-		userInfo = getCurrentUserInfo()
-		if not userInfo:
-			userInfo = createUserInfo()
-			
-		url = users.create_logout_url(self.request.uri)
-		url_linktext = 'logout'
-		
+
 		site = getSiteFromUrl(siteURL)
 		siteID = site.key().id()
 		item = Item.get_by_id(int(itemID))	
@@ -27,6 +21,8 @@ class ItemView(webapp.RequestHandler):
 			
 		comments_query = Comment.all().order('date').filter('item =', item)
 		comments = comments_query.fetch(100)
+		
+		userInfo, loggedIn, login_url = getUserStatus(self)
 
 		template_values = {
 			'comments': comments,
@@ -34,8 +30,9 @@ class ItemView(webapp.RequestHandler):
 			'site': site,
 			'theUrl': self.request.uri,
 			'siteID': siteID,
-			'url': url,
-			'url_linktext': url_linktext,
+			'login_url': login_url,
+			'userInfo': userInfo,
+			'loggedIn': loggedIn,
 		}
 
 		path = os.path.join(os.path.dirname(__file__), '../views/item.html')

@@ -12,84 +12,22 @@ from datamodel import *
 # Other imports for different url handlers
 from controllers import *
 
-def getRedirectUrl(listID):
-	return '/list/' + str(listID)
-	
-
-def getRecentSites():
-	sites_query = Site.all().order('-date')
-	sites = sites_query.fetch(100)
-	return sites
-		
-def getPopularSites():
-	sites_query = Site.all().order('-views')
-	sites = sites_query.fetch(100)
-	return sites
-
-class MainPage(webapp.RequestHandler):
-	exception = None #"Error"
-	
-	def get(self):
-		if users.get_current_user():
-			url = users.create_logout_url(self.request.uri)
-			url_linktext = 'logout'
-			
-			info = getCurrentUserInfo()
-		
-			if not info:
-				info = UserInfo()
-				info.user = users.get_current_user()
-				info.displayName = users.get_current_user().nickname()
-				info.put()
-				
-			greeting = info.displayName
-		else:
-			url = users.create_login_url(self.request.uri)
-			url_linktext = 'login'
-			greeting = ""
-
-
-		
-		recentSites = getRecentSites()
-		popularSites = getPopularSites()
-				
-		template_values = {
-			'url': url,
-			'url_linktext': url_linktext,
-			'greeting': greeting,
-			'recentSites': recentSites,
-			'popularSites': popularSites,
-			'exception': self.exception,
-		}
-
-		path = os.path.join(os.path.dirname(__file__), 'views/index.html')
-		self.response.out.write(template.render(path, template_values))
-		
-class Taken(MainPage):
-	exception = "Sorry, this url is already taken."
-			
-class Zero(MainPage):
-	exception = "One of the values you entered was empty."
-	
-class Invalid(MainPage):
-	exception = "Your URL contains invalid characters."
-
 application = webapp.WSGIApplication(
-                                     [('/', MainPage),
-									  ('/create', CreateSite),
-									  ('/error/taken', Taken),
-									  ('/error/zero', Zero),
-									  ('/error/invalid', Invalid),
-									  (r'/(.*)/item/(.*)', ItemView),
-									  (r'/(.*)/best/(.*)', BestView),
-									  (r'/(.*)/newitem', SubmitItem),
-									  (r'/(.*)/upvote/(.*)', UpVoteItem),
-									  (r'/(.*)/downvote/(.*)', DownVoteItem),
-									  (r'/(.*)/comment/(.*)', CommentView),
-									  (r'/(.*)/edit(.*)', EditSettings),
-									  (r'/(.*)/delete/(.*)', DeleteItem),
-									  (r'/img', Image),
-									  (r'/(.*)', SiteView)],
+                                     [('/', MainPage),							#home.py
+									  ('/create', CreateSite),					#create.py
+									  ('/error/taken', Taken),					#errors.py
+									  ('/error/zero', Zero),					#errors.py
+									  ('/error/invalid', Invalid),				#errors.py
+									  (r'/(.*)/item/(.*)', ItemView),			#itemview.py
+									  (r'/(.*)/best/(.*)', BestView),			#best.py
+									  (r'/(.*)/newitem', SubmitItem),			#submit.py
+									  (r'/(.*)/upvote/(.*)', UpVoteItem),		#votes.py
+									  (r'/(.*)/downvote/(.*)', DownVoteItem),	#votes.py
+									  (r'/(.*)/comment/(.*)', CommentView),		#comment.py
+									  (r'/(.*)/edit(.*)', EditSettings),		#edit.py
+									  (r'/(.*)/delete/(.*)', DeleteItem),		#delete.py
+									  (r'/img', Image),							#image.py
+									  (r'/(.*)', SiteView)],					#siteview.py
                                      debug=True)
 
 def main():

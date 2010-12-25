@@ -11,7 +11,11 @@
 				{% if admin %}
 				<a href="/{{ site.url }}/edit">edit settings</a> |
 				{% endif %}
-				<a href="{{ url }}">{{ url_linktext }}</a>
+				{% if loggedIn %}
+				<a href="{{ login_url }}">logout</a>
+				{% else %}
+				<a href="{{ login_url }}">login</a>
+				{% endif %}
 			</div>
 			<div id="siteTitle"><a href="/{{ site.url }}">{{ site.name }}</a></div>
 			
@@ -25,6 +29,7 @@
 			</div>
 			{% endif %}
 			
+			{% if loggedIn %}
 			<form	action="/{{ site.url }}/newitem" 
 				{% if site.hasPhotos %}
 				enctype="multipart/form-data"
@@ -36,6 +41,11 @@
 				{% endif %}
 				<div class="submitIdea button"><input type="submit" value="Submit It"></div>
 			</form>
+			{% else %}
+			<div id="loginRequest">
+			<a href="{{ login_url }}">Log in</a> to submit a post.
+			</div>
+			{% endif %}
 			
 			<div style="clear:both"></div>
 			

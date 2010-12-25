@@ -9,6 +9,25 @@ from operator import attrgetter
 
 from datamodel import *
 
+def getUserStatus(self):
+	userInfo = None
+	if users.get_current_user():
+		loggedIn = True
+		url = users.create_logout_url(self.request.uri)
+		userInfo = getOrCreateUserInfo()
+	else:
+		loggedIn = False
+		url = users.create_login_url(self.request.uri)
+	
+	return (userInfo, loggedIn, url)
+
+def getOrCreateUserInfo():
+	info = getCurrentUserInfo()
+	
+	if not info:
+		info = createUserInfo()
+	return info
+
 def createUserInfo():
 	info = UserInfo()
 	info.user = users.get_current_user()

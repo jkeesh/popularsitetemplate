@@ -9,3 +9,5 @@ from edit import *
 from delete import *
 from best import *
 from image import *
+from home import *
+from errors import *

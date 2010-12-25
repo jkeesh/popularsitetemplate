@@ -1,49 +1,55 @@
 {% include "header.html" %}
-	
-	<body>
+
+<body>
+	<div id="wrapper">
+		<div style="float:right">
+			<a href="/">home</a> |
+			<a href="{{ login_url }}">
+				{% if loggedIn %}logout{% else %}login{% endif %}
+			</a>
+			
+		</div>
+		<h1><a href="/{{ site.url }}">{{ site.name }}</a></h1>
+		
 		<div id="wrapper">
-			<div style="float:right">
-				<a href="/">home</a> |
-				<a href="{{ url }}">{{ url_linktext }}</a>
-			</div>
-			<h1><a href="/{{ site.url }}">{{ site.name }}</a></h1>
+			<h2>Item #{{ item.key.id }}</h2>
 			
-			<div id="wrapper">
-				<h2>Item #{{ item.key.id }}</h2>
-				
-				{% include "bestlinks.html" %}
-				
-				
-				{% include "story.html" %}
-				
-				<div style="height:10px;"></div>
-				
-				{% if site.hasComments %}
-				
-				{% for comment in comments %}
-				<div class="comment">
-					<div class="commentAuthor"> {{ comment.author.displayName }}:</div>
-					<div class="commentText">{{ comment.text|escape }} </div>
-					
-				</div>
-				{% endfor %}
-				
-				<div class="notice">
-					Note: Comments will contain your username.
-				</div>
-				
-				<div id="commentBox">
-					<form action="/{{ site.url }}/comment/{{ item.key.id}}" method="post">
-						<div><textarea name="content"></textarea></div>
-						<div class="submitIdea button"><input type="submit" value="Comment"></div>
-					</form>
-				</div>
-				{% endif %}
-				
+			{% include "bestlinks.html" %}			
+			{% include "story.html" %}
+			
+			<div style="height:10px;"></div>
+			
+			{% if site.hasComments %}
+			
+			{% for comment in comments %}
+			<div class="comment">
+				<div class="commentAuthor"> {{ comment.author.displayName }}:</div>
+				<div class="commentText">{{ comment.text|escape }} </div>
+			</div>
+			{% endfor %}
+			
+			{% if loggedIn %}	
+			<div class="notice">
+				Note: Comments will contain your username.
 			</div>
 			
+			<div id="commentBox">
+				<form action="/{{ site.url }}/comment/{{ item.key.id}}" method="post">
+					<div><textarea name="content"></textarea></div>
+					<div class="submitIdea button"><input type="submit" value="Comment"></div>
+				</form>
+			</div>
+			{% else %}
+			<div id="loginRequest">
+				<a href="{{ login_url }}">Log in</a> to post a comment.
+			</div>
+			{% endif %}
+			{% endif %}
 			
 		</div>
 		
-	</body>
+		
+	</div>
+	
+</body>
 </html>
